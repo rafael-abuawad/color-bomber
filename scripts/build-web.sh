@@ -33,7 +33,7 @@ else
   echo "wasm-opt not found; shipping the unoptimized wasm" >&2
 fi
 
-cp web/index.html dist/index.html
+cp web/index.html web/favicon.ico web/favicon.png web/apple-touch-icon.png dist/
 cp -a assets/sprites assets/fonts dist/assets/
 
 bytes=$(wc -c < dist/color-bomber_bg.wasm)
