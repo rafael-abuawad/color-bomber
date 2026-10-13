@@ -34,7 +34,7 @@ else
 fi
 
 cp web/index.html web/favicon.ico web/favicon.png web/apple-touch-icon.png dist/
-cp -a assets/sprites assets/fonts dist/assets/
+cp -a assets/sprites assets/fonts assets/sounds dist/assets/
 
 bytes=$(wc -c < dist/color-bomber_bg.wasm)
 echo "color-bomber_bg.wasm is ${bytes} bytes"

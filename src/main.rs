@@ -5,6 +5,7 @@ use bevy::camera::ScalingMode;
 use bevy::prelude::*;
 
 mod assets;
+mod audio;
 mod bombs;
 mod buttons;
 mod city;

@@ -10,6 +10,10 @@ pub struct GameAssets {
     pub hex: Handle<Image>,
     pub flames: [Handle<Image>; 3],
     pub font: Handle<Font>,
+    pub catch: Handle<AudioSource>,
+    pub miss: Handle<AudioSource>,
+    pub button: Handle<AudioSource>,
+    pub game_over: Handle<AudioSource>,
 }
 
 impl GameAssets {
@@ -39,6 +43,10 @@ impl GameAssets {
                 server.load("sprites/flame_2.png"),
             ],
             font: server.load("fonts/PressStart2P-Regular.ttf"),
+            catch: server.load("sounds/catch.ogg"),
+            miss: server.load("sounds/miss.ogg"),
+            button: server.load("sounds/button.ogg"),
+            game_over: server.load("sounds/game_over.ogg"),
         }
     }
 }

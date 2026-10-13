@@ -6,6 +6,7 @@ use web_time::{SystemTime, UNIX_EPOCH};
 use bevy::prelude::*;
 
 use crate::assets::GameAssets;
+use crate::audio;
 use crate::buttons::{ColorButton, ColorPressed};
 use crate::city::{stage_tint, Building};
 use crate::rules::{
@@ -134,6 +135,7 @@ fn miss(
         Vec3::new(x, y, 8.0),
         Color::srgb(0.75, 0.75, 0.78),
     );
+    audio::play(commands, assets.miss.clone());
     if session.lives == 0 {
         return;
     }
@@ -172,6 +174,7 @@ pub fn resolve_presses(
                 button.pressed = 0.14;
             }
         }
+        audio::play(&mut commands, assets.button.clone());
         if !playing {
             continue;
         }
@@ -195,6 +198,7 @@ pub fn resolve_presses(
         gone.push(id);
         commands.entity(entity).despawn();
         session.score += 1;
+        audio::play(&mut commands, assets.catch.clone());
         vfx::spawn_burst(&mut commands, &assets, &mut session.rng, origin, tint);
     }
 }
@@ -224,8 +228,14 @@ pub fn begin_run(
     info!("run started lives={}", session.lives);
 }
 
-pub fn end_run(session: Res<Session>, mut commands: Commands, bombs: Query<Entity, With<Bomb>>) {
+pub fn end_run(
+    session: Res<Session>,
+    assets: Res<GameAssets>,
+    mut commands: Commands,
+    bombs: Query<Entity, With<Bomb>>,
+) {
     info!("game over score={}", session.score);
+    audio::play(&mut commands, assets.game_over.clone());
     for entity in &bombs {
         commands.entity(entity).despawn();
     }

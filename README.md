@@ -2,7 +2,7 @@
 
 A portrait bomb-catching game. Purple, orange, and green bombs fall over a floating skyline. Match the lowest bomb of a color before it crosses the rooftops. A miss costs a life and damages the nearest building. The run ends at zero lives.
 
-The playfield is 720×1080. The desktop window is the same shape at 480×720. There is no audio.
+The playfield is 720×1080. The desktop window is the same shape at 480×720. A catch, a miss, a button press, and game over each play a short effect.
 
 ## Play
 
@@ -48,4 +48,4 @@ cf deploy
 
 ## Art and font
 
-Runtime sprites live in `assets/sprites`. The Inkscape sources and reference screenshots are the other files under `assets/`. The on-screen font is [Press Start 2P](https://fonts.google.com/specimen/Press+Start+2P), under the SIL Open Font License (`assets/fonts/OFL.txt`).
+Runtime sprites live in `assets/sprites`. The Inkscape sources and reference screenshots are the other files under `assets/`. The on-screen font is [Press Start 2P](https://fonts.google.com/specimen/Press+Start+2P), under the SIL Open Font License (`assets/fonts/OFL.txt`). The effects in `assets/sounds` are Ogg Vorbis.
