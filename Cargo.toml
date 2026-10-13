@@ -1,0 +1,31 @@
+[package]
+name = "color-bomber"
+version = "0.1.0"
+edition = "2024"
+
+[dependencies]
+bevy = "0.20"
+web-time = "1.1"
+
+# Browser randomness. getrandom 0.4 is what Bevy's rand uses; 0.3 is what
+# ahash still pulls in. Both need the JS backend on wasm32-unknown-unknown.
+[target.'cfg(target_arch = "wasm32")'.dependencies]
+getrandom = { version = "0.4", features = ["wasm_js"] }
+getrandom_03 = { package = "getrandom", version = "0.3", features = ["wasm_js"] }
+bevy = { version = "0.20", features = ["webgl2"] }
+
+# Size-focused profile for the browser build. Native `release` stays unchanged.
+[profile.wasm]
+inherits = "release"
+opt-level = "z"
+lto = "thin"
+codegen-units = 1
+panic = "abort"
+strip = "symbols"
+
+# Bevy compiles a lot of crates; keep dependency builds optimized in dev.
+[profile.dev]
+opt-level = 1
+
+[profile.dev.package."*"]
+opt-level = 3

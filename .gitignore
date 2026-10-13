@@ -1,0 +1,23 @@
+# Rust
+/target
+**/*.rs.bk
+
+# Browser bundle produced by scripts/build-web.sh
+/dist
+
+# Node and the Cloudflare CLI
+/node_modules
+/.cloudflare
+/.wrangler
+
+# Account selection and credentials. cf writes these locally.
+cloudflare-account.json
+.env
+.env.*
+!.env.example
+
+# OS and editor leftovers
+.DS_Store
+Thumbs.db
+*.swp
+*.swo
